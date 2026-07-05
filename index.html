@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Desafio de Neemias — Liderança, Fé e Reconstrução</title>
+    <style>
+        :root {
+            --bg-color: #fbf9f5;
+            --text-color: #2c2520;
+            --accent-color: #8c6239;
+            --accent-light: #dfd5c6;
+            --muted-color: #65584d;
+            --border-color: #e6dfd5;
+            --max-width: 720px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .historical-illustration {
+            display: block;
+            margin: 0 auto 30px auto;
+            max-width: 180px;
+            opacity: 0.85;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: var(--muted-color);
+            font-size: 1.1rem;
+        }
+
+        .intro {
+            font-size: 1.15rem;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            top: -2px;
+        }
+
+        .grid {
+            margin-top: 20px;
+        }
+
+        .card {
+            padding: 20px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .card:last-child {
+            border-bottom: none;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            color: var(--accent-color);
+            flex-shrink: 0;
+        }
+
+        .quote {
+            font-style: italic;
+            background-color: #f3eee6;
+            padding: 15px 25px;
+            border-left: 2px solid var(--accent-color);
+            margin: 25px 0;
+            color: var(--muted-color);
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .logo-container {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-text {
+            font-family: 'Georgia', serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .logo-sub {
+            font-size: 0.8rem;
+            color: var(--muted-color);
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <svg class="historical-illustration" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M35 25C35 25 20 30 20 45C20 60 35 85 50 85C65 85 80 60 80 45C80 30 65 25 65 25" stroke="#8c6239" stroke-width="2" stroke-linecap="round"/>
+            <path d="M50 15V25" stroke="#8c6239" stroke-width="2"/>
+            <path d="M35 25H65" stroke="#8c6239" stroke-width="2"/>
+            <path d="M42 25V84" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
+            <path d="M50 25V85" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
+            <path d="M58 25V84" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
+            <path d="M25 45H75" stroke="#8c6239" stroke-width="1.5" opacity="0.4"/>
+            <path d="M28 55H72" stroke="#8c6239" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <h1>O Livro de Neemias</h1>
+        <div class="subtitle">Um tratado sobre liderança, perseverança e restauração</div>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p>O livro de Neemias é um dos grandes exemplos bíblicos de liderança, perseverança e compromisso com a vontade de Deus. A narrativa acontece após o exílio do povo de Israel na Babilônia, quando Jerusalém ainda estava em ruínas. Neemias, que servia como copeiro do rei da Pérsia, recebe a notícia de que os muros da cidade estavam destruídos e que o povo vivia em vergonha e vulnerabilidade.</p>
+            <p>Em vez de aceitar aquela situação como algo normal, Neemias decidiu agir. Ele buscou a Deus em oração, planejou cuidadosamente, pediu autorização ao rei, liderou o povo e enfrentou diversas dificuldades até reconstruir os muros de Jerusalém.</p>
+            <p>Uma das principais mensagens do livro é que Deus usa pessoas dispostas a sair da acomodação para cumprir um propósito maior.</p>
+        </section>
+
+        <section>
+            <h2>1. O chamado à ação contra a acomodação</h2>
+            <p>Neemias poderia ter permanecido em sua posição confortável no palácio persa. Ele tinha estabilidade, influência e segurança. No entanto, ao ouvir sobre a situação de Jerusalém, seu coração foi profundamente tocado. O livro ensina que:</p>
+            <ul>
+                <li>A dor diante de um problema pode revelar um chamado de Deus.</li>
+                <li>Não devemos apenas reclamar da situação, mas agir para transformá-la.</li>
+                <li>Grandes mudanças começam quando alguém decide assumir responsabilidade.</li>
+                <li>Deus honra aqueles que trabalham para restaurar pessoas, famílias e comunidades.</li>
+                <li>A fé verdadeira produz ação.</li>
+            </ul>
+            <p>Neemias mostra que servir a Deus exige disposição para enfrentar desafios, mesmo quando isso significa abrir mão do conforto.</p>
+        </section>
+
+        <section>
+            <h2>2. Qualidades de uma liderança íntegra</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎼</span> 1. Sensibilidade espiritual</div>
+                    <p>Antes de agir, Neemias se entristeceu profundamente com a situação de Jerusalém. Ele não era indiferente ao sofrimento do povo. <em>Lição: líderes enxergam necessidades que outros aprenderam a ignorar.</em></p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎘</span> 2. Vida de oração</div>
+                    <p>Antes de tomar qualquer decisão importante, Neemias orava. Durante todo o livro encontramos diversas orações curtas e objetivas. Ele dependia de Deus antes de depender de estratégias humanas.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎡</span> 3. Fé</div>
+                    <p>Neemias acreditava que Deus abriria portas. Mesmo diante de um enorme desafio, nunca perdeu a confiança.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎢</span> 4. Coragem</div>
+                    <p>Pedir ajuda ao rei poderia colocar sua própria vida em risco. Mesmo assim, Neemias enfrentou o medo. A coragem bíblica não é ausência de medo, mas agir apesar dele.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎤</span> 5. Planejamento</div>
+                    <p>Neemias não começou a construir imediatamente. Ele observou a situação, avaliou os danos, definiu prioridades, distribuiu tarefas e organizou equipes. Demonstra que espiritualidade e planejamento caminham juntos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎥</span> 6. Liderança</div>
+                    <p>Neemias inspirava pessoas. Ele não fazia tudo sozinho. Distribuiu responsabilidades e motivou o povo. Uma boa liderança forma equipes.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎦</span> 7. Perseverança</div>
+                    <p>Mesmo sendo criticado e ameaçado, continuou trabalhando. Ele não desistiu diante das dificuldades.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎧</span> 8. Integridade</div>
+                    <p>Neemias recusou privilégios que poderiam beneficiá-lo pessoalmente. Governou pensando no povo e não em si mesmo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎨</span> 9. Disciplina</div>
+                    <p>Manteve foco no objetivo. Não perdeu tempo respondendo a provocações.</p>
+                    <div class="quote">"Estou fazendo uma grande obra, de modo que não poderei descer."</div>
+                    <p>Essa atitude demonstra clareza de propósito.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><span class="card-icon">𐎩</span> 10. Temor a Deus</div>
+                    <p>Toda sua liderança estava fundamentada na obediência a Deus. O sucesso da reconstrução não foi atribuído apenas ao esforço humano, mas ao favor divino.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. Desafios enfrentados na jornada</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title"><strong>O desânimo do povo:</strong></div>
+                    <p>O povo estava abatido depois de muitos anos de dificuldades. Era necessário restaurar também a esperança.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><strong>A oposição externa:</strong></div>
+                    <p>Sambalate, Tobias e Gesém tentaram impedir a reconstrução por meio de zombarias, intimidação, ameaças, falsas acusações e tentativas de distração. Neemias respondeu permanecendo firme e buscando a Deus.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><strong>O medo:</strong></div>
+                    <p>Houve ameaças de ataques. Mesmo assim, Neemias organizou o povo para trabalhar e se defender ao mesmo tempo. Equilíbrio perfeito entre confiança em Deus e responsabilidade prática.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><strong>Problemas internos:</strong></div>
+                    <p>Havia exploração dos pobres por pessoas do próprio povo. Neemias enfrentou essas injustiças internas com firmeza.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><strong>O cansaço:</strong></div>
+                    <p>A reconstrução era pesada. Além do trabalho físico, havia pressão constante. Mesmo cansados, continuaram.</p>
+                </div>
+                <div class="card">
+                    <div class="card-title"><strong>A necessidade de manter a santidade:</strong></div>
+                    <p>Após reconstruir os muros, compreendeu que uma cidade restaurada precisava de um povo comprometido com Deus. Promoveu a leitura da Lei, a renovação da aliança e reformas profundas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Exemplos para aplicar à nossa vida</h2>
+            <ul>
+                <li><strong>Tenha um propósito:</strong> Neemias viveu para algo maior do que seu conforto.</li>
+                <li><strong>Ore antes de agir:</strong> A oração orientava suas decisões e fortalecia sua coragem.</li>
+                <li><strong>Não espere que outros resolvam:</strong> Decida fazer parte da solução.</li>
+                <li><strong>Planeje:</strong> A fé não elimina a necessidade de organização e sabedoria.</li>
+                <li><strong>Persevere:</strong> Dificuldades não significam ausência da vontade de Deus.</li>
+                <li><strong>Trabalhe em equipe:</strong> Grandes objetivos exigem cooperação mútua.</li>
+                <li><strong>Mantenha o foco:</strong> Escolha permanecer concentrado na missão primordial.</li>
+                <li><strong>Enfrente conflitos com sabedoria:</strong> Corrija as injustiças e busque a unidade.</li>
+                <li><strong>Sirva com integridade:</strong> Exerça influência com humildade e responsabilidade.</li>
+                <li><strong>A verdadeira restauração começa no coração:</strong> Conquistas externas só têm valor duradouro quando acompanhadas por transformação interior.</li>
+            </ul>
+        </section>
+
+        <section style="margin-top: 40px; padding: 25px; background-color: #f5efe6; border-radius: 4px;">
+            <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 0;"><strong>Conclusão:</strong> O livro de Neemias ensina que Deus realiza grandes obras por meio de pessoas que unem oração, fé, planejamento, coragem e perseverança. Neemias não foi apenas um construtor de muros; foi um líder que restaurou a esperança de um povo. Seu exemplo continua altamente relevante para quem deseja liderar com integridade e edificar um legado sólido.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo-container">
+            <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="5" y="26" width="20" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
+                <rect x="28" y="26" width="24" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
+                <rect x="55" y="26" width="20" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
+                <rect x="15" y="14" width="22" height="10" rx="1" fill="#8c6239"/>
+                <rect x="40" y="14" width="25" height="10" rx="1" fill="#8c6239"/>
+                <rect x="22" y="4" width="12" height="8" rx="1" fill="#8c6239" opacity="0.8"/>
+                <rect x="46" y="4" width="12" height="8" rx="1" fill="#8c6239" opacity="0.8"/>
+            </svg>
+            <div class="logo-text">O Desafio de Neemias</div>
+            <div class="logo-sub">Estudos sobre Liderança & Fé</div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
