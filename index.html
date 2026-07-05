@@ -1,329 +1,1675 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR" class="scroll-smooth"><head><script data-bard-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjBmNDhjMDQxMTUxMmM3NTM4NjJkMmFkZWVmYjg0NTczZTAyZmFlMjMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIwMDc3NTY5MjczODA3NDIyMjI2MSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjX2U2ODZhZWZhNDI3NTdmYmZfaW5kZXguaHRtbC02In0sImV4cCI6MTc4MzI5NjI4NSwiaWF0IjoxNzgzMjkyNjg1LCJhbGciOiJSUzI1NiJ9.lMNwmXxnsvYMIn9W6C0Lx5kRn8lzrI00UoZpI5jUbcSX4jqb7qi4q7SdQH6wQq95Apl2aPbKN0at8iNiv-WuXg7BHZy2nnKmIwmsszyIQv2bW1LSjIGUhuRM8ARI8sc7d7a5IR2m5xyoyQCgVlOwlk45B2_t5AlsvgbM2CDUuzsb8EMgtIafKzHB91__vb3TKZ7jqk2epO1JpY7hEdGhjHG26ZHNW3bJnuMil1JxFhDnGYwIeOwlKq8BBHrkGGl7u06prXr4eeuL_MYTioNPbo9LmHYJAjLhl8YKpyCbG3AfvWrZLcoeNXL3-GIWj2ldoj1up4vR93wbT3niGer4nw","c_e686aefa42757fbf_index.html-6")</script><script data-bard-injected="true">(function() {
+  document.addEventListener('mouseup', function(e) {
+    const selection = window.getSelection();
+    const selectedText = selection ? selection.toString().trim() : '';
+    if (selectedText.length > 0) {
+      const range = selection.getRangeAt(0);
+      // Clone the original user selection range before DOM manipulation. In browser DOM mechanics,
+      // removing temporary nodes from within an active selection invalidates and collapses the selection pointers.
+      const originalRange = range.cloneRange();
+      const rect = range.getBoundingClientRect();
+
+      const startTag = document.createTextNode('<selection-tag>');
+      const endTag = document.createTextNode('</selection-tag>');
+
+      const rangeStart = range.cloneRange();
+      rangeStart.collapse(true);
+
+      const rangeEnd = range.cloneRange();
+      rangeEnd.collapse(false);
+
+      // Insert end tag first to avoid shifting start boundary if they are in the same node.
+      rangeEnd.insertNode(endTag);
+      rangeStart.insertNode(startTag);
+
+      const fullTextWithTags = document.body.innerText;
+
+      if (startTag.parentNode) {
+        startTag.parentNode.removeChild(startTag);
+      }
+      if (endTag.parentNode) {
+        endTag.parentNode.removeChild(endTag);
+      }
+
+      // Explicitly restore the user's original selection range. Without this restoration, the selection collapses
+      // instantly, causing subsequent mouse movements or clicks to evaluate window.getSelection() as empty,
+      // which triggers a premature textSelectionCleared post-message that wipes out artifactTextWithTags in the store.
+      selection.removeAllRanges();
+      selection.addRange(originalRange);
+
+      window.parent.postMessage({
+        type: 'textSelection',
+        text: selectedText,
+        fullTextWithTags: fullTextWithTags,
+        rect: {
+          top: rect.top,
+          left: rect.left,
+          bottom: rect.bottom,
+          right: rect.right,
+          width: rect.width,
+          height: rect.height,
+        },
+      }, '*');
+    } else {
+      window.parent.postMessage({
+        type: 'textSelectionCleared',
+      }, '*');
+    }
+  }, true);
+})();</script><script data-bard-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-injected="true">(function(){'use strict';var h=typeof Object.defineProperties=="function"?Object.defineProperty:function(a,b,d){if(a==Array.prototype||a==Object.prototype)return a;a[b]=d.value;return a};function l(a){a=["object"==typeof globalThis&&globalThis,a,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var b=0;b<a.length;++b){var d=a[b];if(d&&d.Math==Math)return d}throw Error("Cannot find global object");}var n=l(this);
+function p(a,b){if(b)a:{var d=n;a=a.split(".");for(var c=0;c<a.length-1;c++){var e=a[c];if(!(e in d))break a;d=d[e]}a=a[a.length-1];c=d[a];b=b(c);b!=c&&b!=null&&h(d,a,{configurable:!0,writable:!0,value:b})}}function r(a){function b(c){return a.next(c)}function d(c){return a.throw(c)}return new Promise(function(c,e){function f(g){g.done?c(g.value):Promise.resolve(g.value).then(b,d).then(f,e)}f(a.next())})}function t(a){return r(a())}
+p("Object.values",function(a){return a?a:function(b){var d=[],c;for(c in b)Object.prototype.hasOwnProperty.call(b,c)&&d.push(b[c]);return d}});p("Array.prototype.includes",function(a){return a?a:function(b,d){var c=this;c instanceof String&&(c=String(c));var e=c.length;d=d||0;for(d<0&&(d=Math.max(d+e,0));d<e;d++){var f=c[d];if(f===b||Object.is(f,b))return!0}return!1}});/*
+
+ MIT License
+
+ Copyright (c) 2017-2023 W.Y.
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+
+*/
+function u(a,b){var d=a.style;b.backgroundColor&&(d.backgroundColor=b.backgroundColor);b.width&&(d.width=`${b.width}px`);b.height&&(d.height=`${b.height}px`);var c=b.style;c!=null&&Object.keys(c).forEach(e=>{d[e]=c[e]})};var v=(()=>{var a=0;return()=>{a+=1;return`u${`0000${(Math.random()*1679616<<0).toString(36)}`.slice(-4)}${a}`}})();function w(a){var b=[];for(let d=0,c=a.length;d<c;d++)b.push(a[d]);return b}let x=null;function y(a={}){return x?x:a.l?x=a.l:x=w(window.getComputedStyle(document.documentElement))}function z(a,b){return(a=(a.ownerDocument.defaultView||window).getComputedStyle(a).getPropertyValue(b))?parseFloat(a.replace("px","")):0}
+function A(a,b={}){var d;if(!(d=b.width)){d=z(a,"border-left-width");var c=z(a,"border-right-width");d=a.clientWidth+d+c}(b=b.height)||(b=z(a,"border-top-width"),c=z(a,"border-bottom-width"),b=a.clientHeight+b+c);return{width:d,height:b}}function B(a){return new Promise((b,d)=>{var c=new Image;c.onload=()=>{c.decode().then(()=>{requestAnimationFrame(()=>b(c))})};c.onerror=d;c.crossOrigin="anonymous";c.decoding="async";c.src=a})}
+function C(a){return t(function*(){return Promise.resolve().then(()=>(new XMLSerializer).serializeToString(a)).then(encodeURIComponent).then(b=>`data:image/svg+xml;charset=utf-8,${b}`)})}
+function D(a,b,d){return t(function*(){var c=document.createElementNS("http://www.w3.org/2000/svg","svg"),e=document.createElementNS("http://www.w3.org/2000/svg","foreignObject");c.setAttribute("width",`${b}`);c.setAttribute("height",`${d}`);c.setAttribute("viewBox",`0 0 ${b} ${d}`);e.setAttribute("width","100%");e.setAttribute("height","100%");e.setAttribute("x","0");e.setAttribute("y","0");e.setAttribute("externalResourcesRequired","true");c.appendChild(e);e.appendChild(a);return C(c)})}
+var E=(a,b)=>{if(a instanceof b)return!0;a=Object.getPrototypeOf(a);return a===null?!1:a.constructor.name===b.name||E(a,b)};function F(a,b){return y(b).map(d=>{var c=a.getPropertyValue(d),e=a.getPropertyPriority(d);return`${d}: ${c}${e?" !important":""};`}).join(" ")}
+function G(a,b,d,c){a=window.getComputedStyle(a,d);var e=a.getPropertyValue("content");if(e!==""&&e!=="none"){var f=v();try{b.className=`${b.className} ${f}`}catch(k){return}e=document.createElement("style");var g=e.appendChild;d=`.${f}:${d}`;a.cssText?(c=a.getPropertyValue("content"),c=`${a.cssText} content: '${c.replace(/'|"/g,"")}';`):c=F(a,c);g.call(e,document.createTextNode(`${d}{${c}}`));b.appendChild(e)}};function H(a){return a.search(/^(data:)/)!==-1}function I(a,b,d){return t(function*(){var c=yield fetch(a,b);if(c.status===404)throw Error(`Resource "${c.url}" not found`);var e=yield c.blob();return new Promise((f,g)=>{var k=new FileReader;k.onerror=g;k.onloadend=()=>{try{f(d({o:c,result:k.result}))}catch(m){g(m)}};k.readAsDataURL(e)})})}const J={};function K(a,b,d){var c=a.replace(/\?.*/,"");d&&(c=a);/ttf|otf|eot|woff2?/i.test(c)&&(c=c.replace(/.*\//,""));return b?`[${b}]${c}`:c}
+function L(a,b,d){return t(function*(){var c=K(a,b,d.C);if(J[c]!=null)return J[c];d.u&&(a+=(/\?/.test(a)?"&":"?")+(new Date).getTime());try{let f=yield I(a,d.i,({o:g,result:k})=>{b||(b=g.headers.get("Content-Type")||"");return k.split(/,/)[1]});var e=`data:${b};base64,${f}`}catch(f){e=d.B||""}return J[c]=e})};const M={P:"application/font-woff",R:"application/font-woff",N:"application/font-truetype",v:"application/vnd.ms-fontobject",H:"image/png",F:"image/jpeg",D:"image/jpeg",A:"image/gif",M:"image/tiff",L:"image/svg+xml",O:"image/webp"};function N(a){return(a=/\.([^./]*?)$/g.exec(a))?a[1]:""};function O(a){return t(function*(){var b=a.toDataURL();return b==="data:,"?a.cloneNode(!1):B(b)})}function aa(a,b){return t(function*(){if(a.currentSrc){var d=document.createElement("canvas");let c=d.getContext("2d");d.width=a.clientWidth;d.height=a.clientHeight;c==null||c.drawImage(a,0,0,d.width,d.height);d=d.toDataURL();return B(d)}d=a.poster;d=yield L(d,M[N(d).toLowerCase()]||"",b);return B(d)})}
+function ba(a,b){return t(function*(){try{let d;if(a==null?0:(d=a.contentDocument)==null?0:d.body)return yield P(a.contentDocument.body,b,!0)}catch(d){}return a.cloneNode(!1)})}function ca(a,b){return t(function*(){return E(a,HTMLCanvasElement)?O(a):E(a,HTMLVideoElement)?aa(a,b):E(a,HTMLIFrameElement)?ba(a,b):a.cloneNode(a.tagName!=null&&a.tagName.toUpperCase()==="SVG")})}
+function da(a,b,d){return t(function*(){if(b.tagName!=null&&b.tagName.toUpperCase()==="SVG")return b;var c=[];if(a.tagName!=null&&a.tagName.toUpperCase()==="SLOT"&&a.assignedNodes)c=w(a.assignedNodes());else{let e;if(E(a,HTMLIFrameElement)&&((e=a.contentDocument)==null?0:e.body))c=w(a.contentDocument.body.childNodes);else{let f;c=w(((f=a.shadowRoot)!=null?f:a).childNodes)}}if(c.length===0||E(a,HTMLVideoElement))return b;yield c.reduce((e,f)=>e.then(()=>P(f,d)).then(g=>{g&&b.appendChild(g)}),Promise.resolve());
+return b})}function ea(a,b,d){var c=b.style;if(c){var e=window.getComputedStyle(a);e.cssText?(c.cssText=e.cssText,c.transformOrigin=e.transformOrigin):y(d).forEach(f=>{var g=e.getPropertyValue(f);f==="font-size"&&g.endsWith("px")&&(g=`${Math.floor(parseFloat(g.substring(0,g.length-2)))-.1}px`);E(a,HTMLIFrameElement)&&f==="display"&&g==="inline"&&(g="block");f==="d"&&b.getAttribute("d")&&(g=`path(${b.getAttribute("d")})`);c.setProperty(f,g,e.getPropertyPriority(f))})}}
+function fa(a,b){E(a,HTMLSelectElement)&&(b=Array.from(b.children).find(d=>a.value===d.getAttribute("value")))&&b.setAttribute("selected","")}
+function ha(a,b){return t(function*(){var d=a.querySelectorAll?a.querySelectorAll("use"):[];if(d.length===0)return a;var c={};for(var e=0;e<d.length;e++){var f=d[e].getAttribute("xlink:href");if(f){let g=document.querySelector(f);a.querySelector(f)||!g||c[f]||(c[f]=yield P(g,b,!0))}}d=Object.values(c);if(d.length){c=document.createElementNS("http://www.w3.org/1999/xhtml","svg");c.setAttribute("xmlns","http://www.w3.org/1999/xhtml");c.style.position="absolute";c.style.width="0";c.style.height="0";
+c.style.overflow="hidden";c.style.display="none";e=document.createElementNS("http://www.w3.org/1999/xhtml","defs");c.appendChild(e);for(f=0;f<d.length;f++)e.appendChild(d[f]);a.appendChild(c)}return a})}
+function P(a,b,d){return t(function*(){return d||!b.filter||b.filter(a)?Promise.resolve(a).then(c=>ca(c,b)).then(c=>da(a,c,b)).then(c=>{E(c,Element)&&(ea(a,c,b),G(a,c,":before",b),G(a,c,":after",b),E(a,HTMLTextAreaElement)&&(c.textContent=a.value),E(a,HTMLInputElement)&&c.setAttribute("value",a.value),fa(a,c));return c}).then(c=>ha(c,b)):null})};const Q=/url\((['"]?)([^'"]+?)\1\)/g,ia=/url\([^)]+\)\s*format\((["']?)([^"']+)\1\)/g,ja=/src:\s*(?:url\([^)]+\)\s*format\([^)]+\)[,;]\s*)+/g;function ka(a){var b=[];a.replace(Q,(d,c,e)=>{b.push(e);return d});return b.filter(d=>!H(d))}
+function la(a,b,d,c){return t(function*(){try{let e=d?(new URL(b,d||void 0)).toString():b,f;f=yield L(e,M[N(b).toLowerCase()]||"",c);return a.replace(new RegExp(`(url\\(['"]?)(${b.replace(/([.*+?^${}()|\[\]\/\\])/g,"\\$1")})(['"]?\\))`,"g"),`$1${f}$3`)}catch(e){}return a})}function ma(a,{I:b}){return b?a.replace(ja,d=>{for(;;){let [c,,e]=ia.exec(d)||[];if(!e)return"";if(e===b)return`src: ${c};`}}):a}
+function R(a,b,d){return t(function*(){if(a.search(Q)===-1)return a;var c=ma(a,d);return ka(c).reduce((e,f)=>e.then(g=>la(g,f,b,d)),Promise.resolve(c))})};function S(a,b,d){return t(function*(){var c,e=(c=b.style)==null?void 0:c.getPropertyValue(a);return e?(c=yield R(e,null,d),b.style.setProperty(a,c,b.style.getPropertyPriority(a)),!0):!1})}function na(a,b){return t(function*(){(yield S("background",a,b))||(yield S("background-image",a,b));(yield S("mask",a,b))||(yield S("-webkit-mask",a,b))||(yield S("mask-image",a,b))||(yield S("-webkit-mask-image",a,b))})}
+function oa(a,b){return t(function*(){var d=E(a,HTMLImageElement);if(d&&!H(a.src)||E(a,SVGImageElement)&&!H(a.href.baseVal)){var c=d?a.src:a.href.baseVal,e=yield L(c,M[N(c).toLowerCase()]||"",b);yield new Promise((f,g)=>{a.onload=f;a.onerror=b.m?(...k)=>{try{f(b.m(...k))}catch(m){g(m)}}:g;a.decode&&(a.decode=f);a.loading==="lazy"&&(a.loading="eager");d?(a.srcset="",a.src=e):a.href.baseVal=e})}})}
+function pa(a,b){return t(function*(){var d=w(a.childNodes).map(c=>T(c,b));yield Promise.all(d).then(()=>a)})}function T(a,b){return t(function*(){E(a,Element)&&(yield na(a,b),yield oa(a,b),yield pa(a,b))})};const U={};function V(a){return t(function*(){var b=U[a];if(b!=null)return b;b=yield(yield fetch(a)).text();b={url:a,cssText:b};return U[a]=b})}function W(a,b){return t(function*(){var d=a.cssText,c=/url\(["']?([^"')]+)["']?\)/g,e=(d.match(/url\([^)]+\)/g)||[]).map(f=>t(function*(){var g=f.replace(c,"$1");g.startsWith("https://")||(g=(new URL(g,a.url)).href);return I(g,b.i,({result:k})=>{d=d.replace(f,`url(${k})`);return[f,k]})}));return Promise.all(e).then(()=>d)})}
+function X(a){if(a==null)return[];var b=[];a=a.replace(/(\/\*[\s\S]*?\*\/)/gi,"");for(var d=RegExp("((@.*?keyframes [\\s\\S]*?){([\\s\\S]*?}\\s*?)})","gi");;){var c=d.exec(a);if(c===null)break;b.push(c[0])}a=a.replace(d,"");d=/@import[\s\S]*?url\([^)]*\)[\s\S]*?;/gi;for(c=RegExp("((\\s*?(?:\\/\\*[\\s\\S]*?\\*\\/)?\\s*?@media[\\s\\S]*?){([\\s\\S]*?)}\\s*?})|(([\\s\\S]*?){([\\s\\S]*?)})","gi");;){let e=d.exec(a);if(e===null)if(e=c.exec(a),e===null)break;else d.lastIndex=c.lastIndex;else c.lastIndex=
+d.lastIndex;b.push(e[0])}return b}
+function qa(a,b){return t(function*(){var d=[],c=[];a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach((f,g)=>{if(f.type===CSSRule.IMPORT_RULE){let k=g+1;f=V(f.href).then(m=>W(m,b)).then(m=>X(m).forEach(q=>{try{e.insertRule(q,q.startsWith("@import")?k+=1:e.cssRules.length)}catch(Da){}})).catch(()=>{});c.push(f)}})}catch(f){let g=a.find(k=>k.href==null)||document.styleSheets[0];e.href!=null&&c.push(V(e.href).then(k=>W(k,b)).then(k=>X(k).forEach(m=>{g.insertRule(m,g.cssRules.length)})).catch(()=>
+{}))}});return Promise.all(c).then(()=>{a.forEach(e=>{if("cssRules"in e)try{w(e.cssRules||[]).forEach(f=>{d.push(f)})}catch(f){}});return d})})}function ra(a){return a.filter(b=>b.type===CSSRule.FONT_FACE_RULE).filter(b=>b.style.getPropertyValue("src").search(Q)!==-1)}function sa(a,b){return t(function*(){if(a.ownerDocument==null)throw Error("Provided element is not within a Document");var d=w(a.ownerDocument.styleSheets);d=yield qa(d,b);return ra(d)})}
+function ta(a){function b(c){(c.style.fontFamily||getComputedStyle(c).fontFamily).split(",").forEach(e=>{d.add(e.trim().replace(/["']/g,""))});Array.from(c.children).forEach(e=>{e instanceof HTMLElement&&b(e)})}var d=new Set;b(a);return d}function ua(a,b){return t(function*(){var d=yield sa(a,b),c=ta(a);return(yield Promise.all(d.filter(e=>c.has(e.style.fontFamily.trim().replace(/["']/g,""))).map(e=>R(e.cssText,e.parentStyleSheet?e.parentStyleSheet.href:null,b)))).join("\n")})}
+function va(a,b){return t(function*(){var d=b.j!=null?b.j:b.K?null:yield ua(a,b);if(d){let c=document.createElement("style");c.appendChild(document.createTextNode(d));a.firstChild?a.insertBefore(c,a.firstChild):a.appendChild(c)}})};function wa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield P(a,b,!0);yield va(e,b);yield T(e,b);u(e,b);return yield D(e,d,c)})}
+function xa(a,b={}){return t(function*(){var {width:d,height:c}=A(a,b),e=yield wa(a,b);e=yield B(e);var f=document.createElement("canvas"),g=f.getContext("2d"),k=b.G||window.devicePixelRatio||1,m=b.h||d,q=b.g||c;f.width=m*k;f.height=q*k;!b.J&&(f.width>16384||f.height>16384)&&(f.width>16384&&f.height>16384?f.width>f.height?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384):f.width>16384?(f.height*=16384/f.width,f.width=16384):(f.width*=16384/f.height,f.height=16384));
+f.style.width=`${m}`;f.style.height=`${q}`;b.backgroundColor&&(g.fillStyle=b.backgroundColor,g.fillRect(0,0,f.width,f.height));g.drawImage(e,0,0,f.width,f.height);return f})}function ya(a,b={}){return t(function*(){return(yield xa(a,b)).toDataURL()})};const za=["gemini.google.com","corp.google.com","proxy.googlers.com"];function Y(){return document.body.querySelectorAll('[class*="animate"]').length>0}function Z(a){return t(function*(){try{return yield ya(a,{h:a.offsetWidth,g:a.offsetHeight})}catch(d){var b=a.offsetHeight;let c=document.createElement("canvas");c.width=a.offsetWidth;c.height=b;return c.toDataURL("image/png")}})}
+function Aa(){return t(function*(){var a=document.body.offsetWidth,b=document.body.offsetHeight,d=document.body.cloneNode(!0);d.querySelectorAll('[class*="animate"]').forEach(c=>{c.classList.remove(...Array.from(c.classList).filter(e=>e.startsWith("animate")))});d.style.width=`${a}px`;d.style.height=`${b}px`;return d})}
+function Ba(a){return t(function*(){var b=document.body;if(Y()){var d=yield Aa();b=d;document.body.appendChild(d)}d=yield Z(b);Y()&&document.body.removeChild(b);window.parent.postMessage({type:"SEND_SCREENSHOT",image:d,topOffset:document.documentElement.scrollTop},a.origin)})}function Ca(a){return t(function*(){var b={type:"SEND_SCREENSHOT_FOR_DATA_VISUALIZATION",image:yield Z(document.body),topOffset:0};window.parent.postMessage(b,a.origin)})}
+window.addEventListener("message",a=>t(function*(){if(za.some(d=>a.origin.includes(d))){var b=a.data;b&&(b.type==="MAKE_SCREENSHOT"&&(yield Ba(a)),b.type==="MAKE_SCREENSHOT_FOR_DATA_VISUALIZATION"&&(yield Ca(a)))}}));
+})();</script><script data-bard-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.i=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.g=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.h="";var l=0,t=null,r=null,q=[],F=new TextEncoder,G=new TextDecoder;
+c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*16|0;return(f===
+"x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;(g=t)==null||g.postMessage(a)}};
+Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Desafio de Neemias — Liderança, Fé e Reconstrução</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel (Títulos históricos/bíblicos) & Inter (Leitura confortável) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        stone: {
+                            50: '#FAF8F5',   /* Areia Clara / Pergaminho */
+                            100: '#F3EFE9',
+                            200: '#E6DEC3',
+                            700: '#4A4439',  /* Pedra Escura */
+                            800: '#3D372E',
+                            900: '#2C2720',
+                        },
+                        ochre: {
+                            50: '#FDFBF7',
+                            100: '#F9F3E6',
+                            500: '#C59B27',  /* Ouro Antigo */
+                            600: '#A37E1C',
+                            700: '#826214',
+                        },
+                        terracotta: {
+                            600: '#B85A38',  /* Barro cozido / Tijolos */
+                            700: '#944324',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --bg-color: #fbf9f5;
-            --text-color: #2c2520;
-            --accent-color: #8c6239;
-            --accent-light: #dfd5c6;
-            --muted-color: #65584d;
-            --border-color: #e6dfd5;
-            --max-width: 720px;
+        /* Estilos personalizados para refinamento minimalista */
+        .wood-pattern {
+            background-color: #faf8f5;
+            background-image: radial-gradient(rgba(197, 155, 39, 0.05) 1px, transparent 0), radial-gradient(rgba(197, 155, 39, 0.05) 1px, transparent 0);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.7;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .historical-illustration {
-            display: block;
-            margin: 0 auto 30px auto;
-            max-width: 180px;
-            opacity: 0.85;
-        }
-
-        h1 {
-            font-size: 2.2rem;
-            font-weight: 400;
-            color: var(--accent-color);
-            letter-spacing: -0.5px;
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-style: italic;
-            color: var(--muted-color);
-            font-size: 1.1rem;
-        }
-
-        .intro {
-            font-size: 1.15rem;
-            margin-bottom: 40px;
+        .text-justify-custom {
             text-align: justify;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--accent-color);
-            margin-top: 50px;
-            margin-bottom: 25px;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 15px;
-        }
-
-        p {
-            margin-bottom: 20px;
-            text-align: justify;
-        }
-
-        ul {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        li {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        li::before {
-            content: "•";
-            position: absolute;
-            left: 10px;
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            top: -2px;
-        }
-
-        .grid {
-            margin-top: 20px;
-        }
-
-        .card {
-            padding: 20px 0;
-            border-bottom: 1px dashed var(--border-color);
-        }
-
-        .card:last-child {
-            border-bottom: none;
-        }
-
-        .card-title {
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: var(--text-color);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .card-icon {
-            color: var(--accent-color);
-            flex-shrink: 0;
-        }
-
-        .quote {
-            font-style: italic;
-            background-color: #f3eee6;
-            padding: 15px 25px;
-            border-left: 2px solid var(--accent-color);
-            margin: 25px 0;
-            color: var(--muted-color);
-        }
-
-        footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-color);
-            text-align: center;
-        }
-
-        .logo-container {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-text {
-            font-family: 'Georgia', serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .logo-sub {
-            font-size: 0.8rem;
-            color: var(--muted-color);
-            margin-top: 5px;
+            text-justify: inter-word;
         }
     </style>
-</head>
-<body>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.-bottom-10{bottom:-2.5rem}.-left-3\.5{left:-0.875rem}.-right-10{right:-2.5rem}.right-0{right:0px}.top-0{top:0px}.bottom-6{bottom:1.5rem}.right-6{right:1.5rem}.z-10{z-index:10}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-4{margin-left:1rem}.ml-auto{margin-left:auto}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.mt-auto{margin-top:auto}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-0\.5{height:0.125rem}.h-16{height:4rem}.h-44{height:11rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-8{height:2rem}.h-\[1px\]{height:1px}.h-full{height:100%}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-4{height:1rem}.min-h-screen{min-height:100vh}.w-12{width:3rem}.w-16{width:4rem}.w-24{width:6rem}.w-44{width:11rem}.w-5{width:1.25rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-full{width:100%}.w-20{width:5rem}.w-4{width:1rem}.w-7{width:1.75rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-6xl{max-width:72rem}.max-w-lg{max-width:32rem}.shrink-0{flex-shrink:0}.translate-y-24{--tw-translate-y:6rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-12{gap:3rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-6 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1.5rem * var(--tw-space-x-reverse));margin-left:calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-12 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(3rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(3rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.scroll-smooth{scroll-behavior:smooth}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded-\[1px\]{border-radius:1px}.rounded-tr-xl{border-top-right-radius:0.75rem}.border{border-width:1px}.border-y{border-top-width:1px;border-bottom-width:1px}.border-b{border-bottom-width:1px}.border-l{border-left-width:1px}.border-t{border-top-width:1px}.border-b-2{border-bottom-width:2px}.border-ochre-500\/30{border-color:rgb(197 155 39 / 0.3)}.border-stone-200{--tw-border-opacity:1;border-color:rgb(230 222 195 / var(--tw-border-opacity, 1))}.border-stone-200\/60{border-color:rgb(230 222 195 / 0.6)}.border-stone-200\/80{border-color:rgb(230 222 195 / 0.8)}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-stone-400{--tw-border-opacity:1;border-color:rgb(168 162 158 / var(--tw-border-opacity, 1))}.border-stone-800{--tw-border-opacity:1;border-color:rgb(61 55 46 / var(--tw-border-opacity, 1))}.border-stone-900{--tw-border-opacity:1;border-color:rgb(44 39 32 / var(--tw-border-opacity, 1))}.border-ochre-500\/40{border-color:rgb(197 155 39 / 0.4)}.border-ochre-500\/60{border-color:rgb(197 155 39 / 0.6)}.bg-ochre-100{--tw-bg-opacity:1;background-color:rgb(249 243 230 / var(--tw-bg-opacity, 1))}.bg-ochre-500{--tw-bg-opacity:1;background-color:rgb(197 155 39 / var(--tw-bg-opacity, 1))}.bg-ochre-500\/5{background-color:rgb(197 155 39 / 0.05)}.bg-stone-100{--tw-bg-opacity:1;background-color:rgb(243 239 233 / var(--tw-bg-opacity, 1))}.bg-stone-300{--tw-bg-opacity:1;background-color:rgb(214 211 209 / var(--tw-bg-opacity, 1))}.bg-stone-50{--tw-bg-opacity:1;background-color:rgb(250 248 245 / var(--tw-bg-opacity, 1))}.bg-stone-50\/90{background-color:rgb(250 248 245 / 0.9)}.bg-stone-800{--tw-bg-opacity:1;background-color:rgb(61 55 46 / var(--tw-bg-opacity, 1))}.bg-stone-900{--tw-bg-opacity:1;background-color:rgb(44 39 32 / var(--tw-bg-opacity, 1))}.bg-stone-950{--tw-bg-opacity:1;background-color:rgb(12 10 9 / var(--tw-bg-opacity, 1))}.bg-stone-950\/60{background-color:rgb(12 10 9 / 0.6)}.bg-terracotta-600{--tw-bg-opacity:1;background-color:rgb(184 90 56 / var(--tw-bg-opacity, 1))}.bg-ochre-500\/20{background-color:rgb(197 155 39 / 0.2)}.bg-ochre-500\/30{background-color:rgb(197 155 39 / 0.3)}.bg-stone-200{--tw-bg-opacity:1;background-color:rgb(230 222 195 / var(--tw-bg-opacity, 1))}.bg-gradient-to-br{background-image:linear-gradient(to bottom right, var(--tw-gradient-stops))}.from-ochre-100{--tw-gradient-from:#F9F3E6 var(--tw-gradient-from-position);--tw-gradient-to:rgb(249 243 230 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-transparent{--tw-gradient-to:transparent var(--tw-gradient-to-position)}.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-6{padding-bottom:1.5rem}.pl-8{padding-left:2rem}.pt-4{padding-top:1rem}.pt-6{padding-top:1.5rem}.pt-8{padding-top:2rem}.pb-1{padding-bottom:0.25rem}.text-center{text-align:center}.font-sans{font-family:Inter, sans-serif}.font-serif{font-family:Cinzel, serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-ochre-500{--tw-text-opacity:1;color:rgb(197 155 39 / var(--tw-text-opacity, 1))}.text-ochre-600{--tw-text-opacity:1;color:rgb(163 126 28 / var(--tw-text-opacity, 1))}.text-ochre-700{--tw-text-opacity:1;color:rgb(130 98 20 / var(--tw-text-opacity, 1))}.text-stone-100{--tw-text-opacity:1;color:rgb(243 239 233 / var(--tw-text-opacity, 1))}.text-stone-200{--tw-text-opacity:1;color:rgb(230 222 195 / var(--tw-text-opacity, 1))}.text-stone-300{--tw-text-opacity:1;color:rgb(214 211 209 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-50{--tw-text-opacity:1;color:rgb(250 248 245 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-stone-700{--tw-text-opacity:1;color:rgb(74 68 57 / var(--tw-text-opacity, 1))}.text-stone-800{--tw-text-opacity:1;color:rgb(61 55 46 / var(--tw-text-opacity, 1))}.text-stone-900{--tw-text-opacity:1;color:rgb(44 39 32 / var(--tw-text-opacity, 1))}.text-stone-950{--tw-text-opacity:1;color:rgb(12 10 9 / var(--tw-text-opacity, 1))}.text-terracotta-600{--tw-text-opacity:1;color:rgb(184 90 56 / var(--tw-text-opacity, 1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.accent-ochre-500{accent-color:#C59B27}.accent-terracotta-600{accent-color:#B85A38}.opacity-\[0\.03\]{opacity:0.03}.opacity-0{opacity:0}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:scale-\[1\.01\]:hover{--tw-scale-x:1.01;--tw-scale-y:1.01;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-ochre-500:hover{--tw-border-opacity:1;border-color:rgb(197 155 39 / var(--tw-border-opacity, 1))}.hover\:bg-ochre-600:hover{--tw-bg-opacity:1;background-color:rgb(163 126 28 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-200\/60:hover{background-color:rgb(230 222 195 / 0.6)}.hover\:bg-terracotta-600:hover{--tw-bg-opacity:1;background-color:rgb(184 90 56 / var(--tw-bg-opacity, 1))}.hover\:bg-terracotta-700:hover{--tw-bg-opacity:1;background-color:rgb(148 67 36 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-800:hover{--tw-bg-opacity:1;background-color:rgb(61 55 46 / var(--tw-bg-opacity, 1))}.hover\:text-stone-900:hover{--tw-text-opacity:1;color:rgb(44 39 32 / var(--tw-text-opacity, 1))}.hover\:text-terracotta-600:hover{--tw-text-opacity:1;color:rgb(184 90 56 / var(--tw-text-opacity, 1))}.hover\:text-terracotta-700:hover{--tw-text-opacity:1;color:rgb(148 67 36 / var(--tw-text-opacity, 1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.group:hover .group-hover\:scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:inline-block{display:inline-block}.sm\:w-auto{width:auto}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:p-10{padding:2.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-center{text-align:center}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-3xl{font-size:1.875rem;line-height:2.25rem}.sm\:text-5xl{font-size:3rem;line-height:1}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}@media (min-width: 768px){.md\:col-span-3{grid-column:span 3 / span 3}.md\:col-span-9{grid-column:span 9 / span 9}.md\:ml-32{margin-left:8rem}.md\:flex{display:flex}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:py-28{padding-top:7rem;padding-bottom:7rem}.md\:pl-12{padding-left:3rem}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:grid-cols-5{grid-template-columns:repeat(5, minmax(0, 1fr))}.lg\:px-8{padding-left:2rem;padding-right:2rem}.lg\:text-6xl{font-size:3.75rem;line-height:1}}</style></head>
+<body class="wood-pattern text-stone-800 font-sans antialiased min-h-screen flex flex-col selection:bg-ochre-200">
 
-<div class="container">
-    <header>
-        <svg class="historical-illustration" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M35 25C35 25 20 30 20 45C20 60 35 85 50 85C65 85 80 60 80 45C80 30 65 25 65 25" stroke="#8c6239" stroke-width="2" stroke-linecap="round"/>
-            <path d="M50 15V25" stroke="#8c6239" stroke-width="2"/>
-            <path d="M35 25H65" stroke="#8c6239" stroke-width="2"/>
-            <path d="M42 25V84" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
-            <path d="M50 25V85" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
-            <path d="M58 25V84" stroke="#8c6239" stroke-width="1" stroke-dasharray="2 2"/>
-            <path d="M25 45H75" stroke="#8c6239" stroke-width="1.5" opacity="0.4"/>
-            <path d="M28 55H72" stroke="#8c6239" stroke-width="1.5" opacity="0.4"/>
-        </svg>
-        <h1>O Livro de Neemias</h1>
-        <div class="subtitle">Um tratado sobre liderança, perseverança e restauração</div>
+    <!-- Barra de Navegação Superior Minimalista -->
+    <header class="sticky top-0 z-50 bg-stone-50/90 backdrop-blur-md border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#inicio" class="flex items-center space-x-3 group">
+                <!-- Ícone Muro Minimalista -->
+                <svg class="w-8 h-8 text-terracotta-600 transition-transform duration-300 group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18M3 11h18M3 16h18M3 21h18" stroke-linecap="round"></path>
+                    <path d="M6 6v5M12 6v5M18 6v5M9 11v5M15 11v5M6 16v5M12 16v5M18 16v5" stroke-linecap="round"></path>
+                </svg>
+                <span class="font-serif font-bold text-md tracking-wider text-stone-900 hidden sm:inline-block">O Desafio de Neemias</span>
+            </a>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-stone-700">
+                <a href="#historia" class="hover:text-terracotta-600 transition-colors">A História</a>
+                <a href="#qualidades" class="hover:text-terracotta-600 transition-colors">Qualidades</a>
+                <a href="#desafios" class="hover:text-terracotta-600 transition-colors">Desafios</a>
+                <a href="#aplicacao" class="hover:text-terracotta-600 transition-colors">Aplicação Prática</a>
+                <a href="#autoavaliacao" class="hover:text-terracotta-600 transition-colors">Autoavaliação</a>
+            </nav>
+            <div class="flex items-center space-x-2">
+                <a href="#exportar" class="bg-stone-900 text-stone-100 hover:bg-terracotta-700 text-xs font-semibold px-4 py-2 rounded-lg transition-all shadow-sm">
+                    Exportar para GitHub
+                </a>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section class="intro">
-            <p>O livro de Neemias é um dos grandes exemplos bíblicos de liderança, perseverança e compromisso com a vontade de Deus. A narrativa acontece após o exílio do povo de Israel na Babilônia, quando Jerusalém ainda estava em ruínas. Neemias, que servia como copeiro do rei da Pérsia, recebe a notícia de que os muros da cidade estavam destruídos e que o povo vivia em vergonha e vulnerabilidade.</p>
-            <p>Em vez de aceitar aquela situação como algo normal, Neemias decidiu agir. Ele buscou a Deus em oração, planejou cuidadosamente, pediu autorização ao rei, liderou o povo e enfrentou diversas dificuldades até reconstruir os muros de Jerusalém.</p>
-            <p>Uma das principais mensagens do livro é que Deus usa pessoas dispostas a sair da acomodação para cumprir um propósito maior.</p>
-        </section>
-
-        <section>
-            <h2>1. O chamado à ação contra a acomodação</h2>
-            <p>Neemias poderia ter permanecido em sua posição confortável no palácio persa. Ele tinha estabilidade, influência e segurança. No entanto, ao ouvir sobre a situação de Jerusalém, seu coração foi profundamente tocado. O livro ensina que:</p>
-            <ul>
-                <li>A dor diante de um problema pode revelar um chamado de Deus.</li>
-                <li>Não devemos apenas reclamar da situação, mas agir para transformá-la.</li>
-                <li>Grandes mudanças começam quando alguém decide assumir responsabilidade.</li>
-                <li>Deus honra aqueles que trabalham para restaurar pessoas, famílias e comunidades.</li>
-                <li>A fé verdadeira produz ação.</li>
-            </ul>
-            <p>Neemias mostra que servir a Deus exige disposição para enfrentar desafios, mesmo quando isso significa abrir mão do conforto.</p>
-        </section>
-
-        <section>
-            <h2>2. Qualidades de uma liderança íntegra</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎼</span> 1. Sensibilidade espiritual</div>
-                    <p>Antes de agir, Neemias se entristeceu profundamente com a situação de Jerusalém. Ele não era indiferente ao sofrimento do povo. <em>Lição: líderes enxergam necessidades que outros aprenderam a ignorar.</em></p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎘</span> 2. Vida de oração</div>
-                    <p>Antes de tomar qualquer decisão importante, Neemias orava. Durante todo o livro encontramos diversas orações curtas e objetivas. Ele dependia de Deus antes de depender de estratégias humanas.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎡</span> 3. Fé</div>
-                    <p>Neemias acreditava que Deus abriria portas. Mesmo diante de um enorme desafio, nunca perdeu a confiança.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎢</span> 4. Coragem</div>
-                    <p>Pedir ajuda ao rei poderia colocar sua própria vida em risco. Mesmo assim, Neemias enfrentou o medo. A coragem bíblica não é ausência de medo, mas agir apesar dele.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎤</span> 5. Planejamento</div>
-                    <p>Neemias não começou a construir imediatamente. Ele observou a situação, avaliou os danos, definiu prioridades, distribuiu tarefas e organizou equipes. Demonstra que espiritualidade e planejamento caminham juntos.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎥</span> 6. Liderança</div>
-                    <p>Neemias inspirava pessoas. Ele não fazia tudo sozinho. Distribuiu responsabilidades e motivou o povo. Uma boa liderança forma equipes.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎦</span> 7. Perseverança</div>
-                    <p>Mesmo sendo criticado e ameaçado, continuou trabalhando. Ele não desistiu diante das dificuldades.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎧</span> 8. Integridade</div>
-                    <p>Neemias recusou privilégios que poderiam beneficiá-lo pessoalmente. Governou pensando no povo e não em si mesmo.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎨</span> 9. Disciplina</div>
-                    <p>Manteve foco no objetivo. Não perdeu tempo respondendo a provocações.</p>
-                    <div class="quote">"Estou fazendo uma grande obra, de modo que não poderei descer."</div>
-                    <p>Essa atitude demonstra clareza de propósito.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><span class="card-icon">𐎩</span> 10. Temor a Deus</div>
-                    <p>Toda sua liderança estava fundamentada na obediência a Deus. O sucesso da reconstrução não foi atribuído apenas ao esforço humano, mas ao favor divino.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>3. Desafios enfrentados na jornada</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="card-title"><strong>O desânimo do povo:</strong></div>
-                    <p>O povo estava abatido depois de muitos anos de dificuldades. Era necessário restaurar também a esperança.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><strong>A oposição externa:</strong></div>
-                    <p>Sambalate, Tobias e Gesém tentaram impedir a reconstrução por meio de zombarias, intimidação, ameaças, falsas acusações e tentativas de distração. Neemias respondeu permanecendo firme e buscando a Deus.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><strong>O medo:</strong></div>
-                    <p>Houve ameaças de ataques. Mesmo assim, Neemias organizou o povo para trabalhar e se defender ao mesmo tempo. Equilíbrio perfeito entre confiança em Deus e responsabilidade prática.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><strong>Problemas internos:</strong></div>
-                    <p>Havia exploração dos pobres por pessoas do próprio povo. Neemias enfrentou essas injustiças internas com firmeza.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><strong>O cansaço:</strong></div>
-                    <p>A reconstrução era pesada. Além do trabalho físico, havia pressão constante. Mesmo cansados, continuaram.</p>
-                </div>
-                <div class="card">
-                    <div class="card-title"><strong>A necessidade de manter a santidade:</strong></div>
-                    <p>Após reconstruir os muros, compreendeu que uma cidade restaurada precisava de um povo comprometido com Deus. Promoveu a leitura da Lei, a renovação da aliança e reformas profundas.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>4. Exemplos para aplicar à nossa vida</h2>
-            <ul>
-                <li><strong>Tenha um propósito:</strong> Neemias viveu para algo maior do que seu conforto.</li>
-                <li><strong>Ore antes de agir:</strong> A oração orientava suas decisões e fortalecia sua coragem.</li>
-                <li><strong>Não espere que outros resolvam:</strong> Decida fazer parte da solução.</li>
-                <li><strong>Planeje:</strong> A fé não elimina a necessidade de organização e sabedoria.</li>
-                <li><strong>Persevere:</strong> Dificuldades não significam ausência da vontade de Deus.</li>
-                <li><strong>Trabalhe em equipe:</strong> Grandes objetivos exigem cooperação mútua.</li>
-                <li><strong>Mantenha o foco:</strong> Escolha permanecer concentrado na missão primordial.</li>
-                <li><strong>Enfrente conflitos com sabedoria:</strong> Corrija as injustiças e busque a unidade.</li>
-                <li><strong>Sirva com integridade:</strong> Exerça influência com humildade e responsabilidade.</li>
-                <li><strong>A verdadeira restauração começa no coração:</strong> Conquistas externas só têm valor duradouro quando acompanhadas por transformação interior.</li>
-            </ul>
-        </section>
-
-        <section style="margin-top: 40px; padding: 25px; background-color: #f5efe6; border-radius: 4px;">
-            <p style="font-size: 1.1rem; font-style: italic; margin-bottom: 0;"><strong>Conclusão:</strong> O livro de Neemias ensina que Deus realiza grandes obras por meio de pessoas que unem oração, fé, planejamento, coragem e perseverança. Neemias não foi apenas um construtor de muros; foi um líder que restaurou a esperança de um povo. Seu exemplo continua altamente relevante para quem deseja liderar com integridade e edificar um legado sólido.</p>
-        </section>
-    </main>
-
-    <footer>
-        <div class="logo-container">
-            <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="5" y="26" width="20" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
-                <rect x="28" y="26" width="24" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
-                <rect x="55" y="26" width="20" height="10" rx="1" fill="#8c6239" opacity="0.9"/>
-                <rect x="15" y="14" width="22" height="10" rx="1" fill="#8c6239"/>
-                <rect x="40" y="14" width="25" height="10" rx="1" fill="#8c6239"/>
-                <rect x="22" y="4" width="12" height="8" rx="1" fill="#8c6239" opacity="0.8"/>
-                <rect x="46" y="4" width="12" height="8" rx="1" fill="#8c6239" opacity="0.8"/>
+    <!-- Hero Section -->
+    <section id="inicio" class="relative overflow-hidden py-16 md:py-28 border-b border-stone-200">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none select-none">
+            <!-- Padrão geométrico de muralha de fundo -->
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="wall-pattern" width="60" height="30" patternUnits="userSpaceOnUse">
+                    <rect width="60" height="30" fill="none" stroke="#000" stroke-width="1"></rect>
+                    <line x1="30" y1="0" x2="30" y2="15" stroke="#000" stroke-width="1"></line>
+                    <line x1="0" y1="15" x2="60" y2="15" stroke="#000" stroke-width="1"></line>
+                    <line x1="15" y1="15" x2="15" y2="30" stroke="#000" stroke-width="1"></line>
+                    <line x1="45" y1="15" x2="45" y2="30" stroke="#000" stroke-width="1"></line>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#wall-pattern)"></rect>
             </svg>
-            <div class="logo-text">O Desafio de Neemias</div>
-            <div class="logo-sub">Estudos sobre Liderança & Fé</div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <!-- Selo de Época / Ilustração minimalista do Cálice do Rei -->
+            <div class="inline-flex items-center justify-center p-3 bg-stone-100 rounded-full border border-stone-200 shadow-sm mb-6">
+                <!-- Ícone Cálice do Copeiro Real -->
+                <svg class="w-8 h-8 text-ochre-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 3H7c-.5 0-1 .4-1 1v5c0 3.3 2.7 6 6 6s6-2.7 6-6V4c0-.6-.5-1-1-1z" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M12 15v5M9 21h6" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M6 7h12" stroke-linecap="round"></path>
+                </svg>
+            </div>
+            
+            <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-extrabold text-stone-950 tracking-tight leading-tight mb-6">
+                O Livro de Neemias
+            </h1>
+            <p class="font-serif text-lg sm:text-xl text-ochre-700 italic tracking-wider max-w-2xl mx-auto mb-8">
+                "Estou fazendo uma grande obra, de modo que não poderei descer."
+            </p>
+            <div class="h-0.5 w-24 bg-terracotta-600 mx-auto mb-8 rounded"></div>
+            <p class="text-stone-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed text-justify-custom sm:text-center">
+                Uma narrativa extraordinária sobre liderança, integridade, oração estratégica e perseverança. Descubra como um copeiro imperial se tornou o arquiteto da restauração de uma nação inteira.
+            </p>
+        </div>
+    </section>
+
+    <!-- História e Contexto Histórico -->
+    <section id="historia" class="py-16 max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-7 space-y-6">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs font-bold tracking-widest text-terracotta-600 uppercase">Contexto Bíblico</span>
+                    <div class="h-[1px] w-12 bg-stone-300"></div>
+                </div>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900">
+                    Sair da Acomodação por uma Causa Maior
+                </h2>
+                <div class="text-stone-600 space-y-4 leading-relaxed text-justify-custom">
+                    <p>
+                        A narrativa acontece após o exílio do povo de Israel na Babilônia, quando Jerusalém ainda estava em ruínas. Neemias, que servia como copeiro do rei da Pérsia, recebe a notícia de que os muros da cidade estavam destruídos e que o povo vivia em vergonha e vulnerabilidade.
+                    </p>
+                    <p>
+                        Em vez de aceitar aquela situação como algo normal, Neemias decidiu agir. Ele buscou a Deus em oração, planejou cuidadosamente, pediu autorização ao rei, liderou o povo e enfrentou diversas dificuldades até reconstruir os muros de Jerusalém.
+                    </p>
+                    <p class="font-medium text-stone-800 italic">
+                        "Uma das principais mensagens do livro é que Deus usa pessoas dispostas a sair da acomodação para cumprir um propósito maior."
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Bloco de Lições Chave (Estilo Quadro de Pergaminho) -->
+            <div class="lg:col-span-5 bg-stone-100 p-8 rounded-xl border border-stone-200/80 shadow-md space-y-6 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-ochre-100 to-transparent rounded-tr-xl"></div>
+                <h3 class="font-serif text-lg font-bold text-stone-900 flex items-center gap-2">
+                    <!-- Ícone Pergaminho -->
+                    <svg class="w-5 h-5 text-ochre-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-linecap="round"></path>
+                        <path d="M14 2v6h6" stroke-linecap="round"></path>
+                        <path d="M16 13H8M16 17H8M10 9H8" stroke-linecap="round"></path>
+                    </svg>
+                    O que aprendemos aqui?
+                </h3>
+                <ul class="space-y-4 text-sm text-stone-700">
+                    <li class="flex items-start gap-3">
+                        <span class="text-terracotta-600 font-bold mt-0.5">✦</span>
+                        <span>A <strong>dor</strong> diante de um problema pode revelar um chamado.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-terracotta-600 font-bold mt-0.5">✦</span>
+                        <span>Não devemos apenas reclamar, mas <strong>agir</strong> para transformar.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-terracotta-600 font-bold mt-0.5">✦</span>
+                        <span>Grandes mudanças nascem de <strong>assumir responsabilidades</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-terracotta-600 font-bold mt-0.5">✦</span>
+                        <span>Deus honra o trabalho de <strong>restauração</strong> social e espiritual.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-terracotta-600 font-bold mt-0.5">✦</span>
+                        <span>A <strong>fé verdadeira</strong> produz ações ousadas e práticas.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: As 10 Qualidades de Liderança -->
+    <section id="qualidades" class="bg-stone-100 py-16 border-y border-stone-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold tracking-widest text-terracotta-600 uppercase">Perfil de Líder</span>
+                <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
+                    10 Qualidades de Liderança de Neemias
+                </h2>
+                <p class="text-stone-600 text-sm mt-3">
+                    Clique em qualquer pilar ou passe o mouse para revelar a lição central e meditar no seu exemplo prático.
+                </p>
+            </div>
+
+            <!-- Grid de Qualidades (Interativo) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                
+                <!-- Qualidade 1 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Olho / Sensibilidade -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke-linecap="round"></path>
+                                <circle cx="12" cy="12" r="3" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">1. Sensibilidade</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Ele não foi indiferente ao sofrimento e entristeceu-se diante da ruína.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Líderes enxergam dores que outros ignoram.
+                    </div>
+                </div>
+
+                <!-- Qualidade 2 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Oração -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round"></path>
+                                <path d="M12 8v8M9 11h6" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">2. Oração</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Apresentou orações constantes, curtas, focadas e objetivas em todo projeto.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Dependência de Deus sobre táticas humanas.
+                    </div>
+                </div>
+
+                <!-- Qualidade 3 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Fé (Estrela/Luz) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">3. Fé Plena</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Crença inabalável de que as portas seriam abertas pela providência divina.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Confiança ativa que supera impossíveis.
+                    </div>
+                </div>
+
+                <!-- Qualidade 4 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Coragem (Escudo) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">4. Coragem</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Falar com o imperador colocava sua vida em risco, mas ele agiu de cabeça erguida.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Agir com retidão apesar do próprio medo.
+                    </div>
+                </div>
+
+                <!-- Qualidade 5 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Planejamento / Compasso / Prumo -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 22V8M5 12h14M19 12l-7 10-7-10" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">5. Planejamento</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Avaliou ruínas, organizou materiais, traçou cronogramas e atribuiu tarefas.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Espiritualidade e ação estratégica unidas.
+                    </div>
+                </div>
+
+                <!-- Qualidade 6 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Liderança (Pessoas) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round"></path>
+                                <circle cx="9" cy="7" r="4" stroke-linecap="round"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">6. Liderança</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Inspirou voluntários. Não atuou só; distribuiu e celebrou vitórias de equipe.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Grandes líderes criam ótimas equipes.
+                    </div>
+                </div>
+
+                <!-- Qualidade 7 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Perseverança (Âncora/Rocha) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M5 12h14M19 12a7 7 0 0 1-14 0" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">7. Perseverança</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Sob vaias, mentiras de inimigos e hostilidade severa, continuou em ação constante.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Obstáculos não param quem tem chamado.
+                    </div>
+                </div>
+
+                <!-- Qualidade 8 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Integridade (Balança) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v20M20 7H4M20 7c0 3.3-2.7 6-6 6s-6-2.7-6-6M4 7c0 3.3 2.7 6 6 6s6-2.7 6-6" stroke-linecap="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">8. Integridade</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Abriu mão do salário de governador para não sobrecarregar e empobrecer a população.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Autoridade com foco exclusivo no povo.
+                    </div>
+                </div>
+
+                <!-- Qualidade 9 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Disciplina (Alvo) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" stroke-linecap="round"></circle>
+                                <circle cx="12" cy="12" r="6" stroke-linecap="round"></circle>
+                                <circle cx="12" cy="12" r="2" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">9. Disciplina</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Blindado contra as armadilhas de distração que tentavam desviá-lo da obra.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Clareza absoluta de metas e foco.
+                    </div>
+                </div>
+
+                <!-- Qualidade 10 -->
+                <div class="bg-stone-50 p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-ochre-500 transition-all duration-300 group flex flex-col justify-between">
+                    <div>
+                        <div class="text-ochre-500 mb-4 group-hover:scale-110 transition-transform">
+                            <!-- Ícone Temor (Coroa de Glória) -->
+                            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-serif font-bold text-stone-950 text-base leading-snug mb-2">10. Temor a Deus</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            Forte senso de submissão à vontade de Deus. Humildade de reconhecer quem age de fato.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-stone-150 text-[11px] text-terracotta-600 italic">
+                        Todo sucesso vem unicamente de Deus.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Os Desafios Enfrentados -->
+    <section id="desafios" class="py-16 max-w-5xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-xs font-bold tracking-widest text-terracotta-600 uppercase">Resiliência</span>
+            <h2 class="font-serif text-3xl font-bold text-stone-900 mt-2">
+                Os Múltiplos Desafios da Reconstrução
+            </h2>
+            <p class="text-stone-600 text-sm mt-3">
+                Os muros não foram erguidos sob calmaria. Conheça as barreiras internas e externas que ameaçavam parar a obra a cada etapa.
+            </p>
+        </div>
+
+        <!-- Timeline vertical dos Desafios com ícones -->
+        <div class="relative border-l border-stone-300 ml-4 md:ml-32 space-y-12 pb-6">
+            
+            <!-- Desafio 1 -->
+            <div class="relative pl-8 md:pl-12">
+                <!-- Nó indicador -->
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">1</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">O Desânimo</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            O povo estava esgotado, abatido e desacostumado a viver sob dignidade e proteção. Anos de abandono cobraram seu preço físico e psicológico. Foi preciso um intenso trabalho espiritual de resgate de identidade e de esperança antes de carregar as primeiras pedras.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafio 2 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">2</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">Oposição Externa</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            <strong>Sambalate, Tobias e Gesém</strong> utilizaram todas as táticas imagináveis: zombarias humilhantes, mentiras ardilosas, falsas acusações de rebelião, táticas de desinformação e intimidações verbais públicas. Neemias permaneceu impassível, respondendo focado no propósito.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafio 3 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">3</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">O Medo de Ataque</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            Havia ameaças iminentes de assaltos armados contra os trabalhadores desarmados. Neemias respondeu de forma genial e pragmática: dividiu as equipes para trabalhar e guardar a área. <strong>"Uma das mãos na espátula, a outra na espada."</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafio 4 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">4</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">Crise Interna</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            Nem todos os inimigos vinham de fora. Descobriu-se exploração, usura e cobrança injusta de juros contra os mais pobres por membros da nobreza de sua própria etnia. Neemias repreendeu as lideranças com severidade e garantiu equidade e justiça social interna.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafio 5 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">5</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">Cansaço e Fadiga</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            O trabalho era brutal e exaustivo. Além da carga constante de carregar pedras pesadas, os construtores viviam sob a adrenalina e vigilância perpétua contra ataques. Mesmo exaustos, sua perseverança os manteve firmes até o fim.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desafio 6 -->
+            <div class="relative pl-8 md:pl-12">
+                <div class="absolute -left-3.5 bg-stone-50 p-1 rounded-full border border-stone-400">
+                    <div class="w-5 h-5 bg-terracotta-600 rounded-full flex items-center justify-center text-stone-100 text-xs font-bold">6</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+                    <div class="md:col-span-3">
+                        <h4 class="font-serif font-bold text-stone-900 text-lg">Santidade e Pacto</h4>
+                    </div>
+                    <div class="md:col-span-9">
+                        <p class="text-stone-600 text-sm leading-relaxed text-justify-custom">
+                            Erguer o muro físico não bastaria sem a transformação espiritual do povo. Com as paredes firmes, Neemias trouxe o escriba Esdras para ler a Lei de Deus ao povo, promovendo uma reforma de costumes, confissão sincera de pecados e renovação dos votos de comunhão.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Seção: Aplicação Prática e Devocional -->
+    <section id="aplicacao" class="bg-stone-950 text-stone-100 py-16 border-t border-stone-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-ochre-500 uppercase">Ação Hoje</span>
+                <h2 class="font-serif text-3xl font-bold text-stone-100 mt-2">
+                    Exemplos Práticos Para Nossa Vida
+                </h2>
+                <p class="text-stone-400 text-sm mt-3">
+                    As muralhas caídas que você enfrenta podem ser financeiras, emocionais, familiares ou ministeriais. Descubra diretrizes práticas.
+                </p>
+            </div>
+
+            <!-- Bloco Gerador de Plano Prático Interativo -->
+            <div class="bg-stone-900 border border-stone-800 rounded-2xl p-6 sm:p-10 max-w-3xl mx-auto shadow-xl relative overflow-hidden">
+                <div class="absolute -bottom-10 -right-10 w-44 h-44 bg-ochre-500/5 rounded-full pointer-events-none"></div>
+                
+                <h3 class="font-serif text-xl font-bold text-stone-100 mb-6 flex items-center gap-3">
+                    <span class="text-ochre-500">
+                        <!-- Espada e Escápula SVG -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.5 17.5L3 6V3h3l11.5 11.5M13 19l4 4 4-4-4-4-4 4z"></path>
+                        </svg>
+                    </span>
+                    Crie Seu Plano de Aplicação Prática
+                </h3>
+
+                <p class="text-xs text-stone-400 mb-6">
+                    Selecione as áreas que você deseja focar na sua vida pessoal hoje. Nós geraremos um plano devocional estratégico em tempo real para você meditar.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                    <!-- Opção 1 -->
+                    <label class="flex items-start gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800 hover:border-ochre-500 cursor-pointer transition-all select-none">
+                        <input type="checkbox" id="check-prop" class="rounded mt-1 accent-ochre-500" checked="">
+                        <div>
+                            <span class="text-sm font-semibold text-stone-200 block">Ter um Propósito</span>
+                            <span class="text-xs text-stone-400 block mt-0.5">Focar na visão de longo prazo de Deus.</span>
+                        </div>
+                    </label>
+
+                    <!-- Opção 2 -->
+                    <label class="flex items-start gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800 hover:border-ochre-500 cursor-pointer transition-all select-none">
+                        <input type="checkbox" id="check-orac" class="rounded mt-1 accent-ochre-500" checked="">
+                        <div>
+                            <span class="text-sm font-semibold text-stone-200 block">Oração Pré-Ação</span>
+                            <span class="text-xs text-stone-400 block mt-0.5">Integrar preces às decisões diárias.</span>
+                        </div>
+                    </label>
+
+                    <!-- Opção 3 -->
+                    <label class="flex items-start gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800 hover:border-ochre-500 cursor-pointer transition-all select-none">
+                        <input type="checkbox" id="check-plan" class="rounded mt-1 accent-ochre-500">
+                        <div>
+                            <span class="text-sm font-semibold text-stone-200 block">Planejar Estrategicamente</span>
+                            <span class="text-xs text-stone-400 block mt-0.5">Fé unida à organização minuciosa.</span>
+                        </div>
+                    </label>
+
+                    <!-- Opção 4 -->
+                    <label class="flex items-start gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800 hover:border-ochre-500 cursor-pointer transition-all select-none">
+                        <input type="checkbox" id="check-persev" class="rounded mt-1 accent-ochre-500" checked="">
+                        <div>
+                            <span class="text-sm font-semibold text-stone-200 block">Perseverar sob Crítica</span>
+                            <span class="text-xs text-stone-400 block mt-0.5">Ignorar difamações focando no alvo.</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="text-center">
+                    <button onclick="gerarPlanoAcao()" class="bg-ochre-500 hover:bg-ochre-600 text-stone-950 font-bold px-6 py-3 rounded-lg transition-all transform hover:scale-[1.01] text-sm w-full sm:w-auto">
+                        Visualizar Meu Plano Devocional
+                    </button>
+                </div>
+
+                <!-- Painel de Resultados do Plano de Ação -->
+                <div id="plano-resultado" class="mt-8 pt-8 border-t border-stone-800 hidden">
+                    <div class="bg-stone-950 p-6 rounded-xl border border-ochre-500/30 text-stone-200">
+                        <h4 class="font-serif text-lg font-bold text-ochre-500 mb-4 flex items-center justify-between">
+                            <span>Seu Roteiro Prático Inspirado em Neemias:</span>
+                            <span class="text-[10px] uppercase font-sans tracking-widest px-2 py-0.5 bg-stone-800 text-stone-400 rounded">Ativo</span>
+                        </h4>
+                        <div id="plano-conteudo" class="space-y-4 text-xs sm:text-sm leading-relaxed text-stone-300">
+                            <!-- Gerado dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção: Teste de Autoavaliação de Liderança -->
+    <section id="autoavaliacao" class="py-16 max-w-4xl mx-auto px-4">
+        <div class="bg-stone-50 border border-stone-200 rounded-2xl p-6 sm:p-10 shadow-lg">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold tracking-widest text-terracotta-600 uppercase">Devocional Prático</span>
+                <h3 class="font-serif text-2xl font-bold text-stone-950 mt-1">Qual é o seu perfil de liderança hoje?</h3>
+                <p class="text-stone-600 text-xs sm:text-sm mt-2">Responda a estas breves perguntas para descobrir qual virtude de Neemias você mais precisa exercitar hoje.</p>
+            </div>
+
+            <!-- Quiz form -->
+            <div id="quiz-container">
+                <!-- Pergunta 1 -->
+                <div class="quiz-step" data-step="1">
+                    <p class="font-serif font-bold text-stone-900 text-md sm:text-lg mb-4">1. Quando se depara com um grande problema comunitário ou pessoal, você costuma:</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q1" value="oracao" class="accent-terracotta-600" checked="">
+                            <span class="text-sm text-stone-700">Apenas lamentar ou reclamar com amigos sobre a situação.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q1" value="acao" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Buscar imediatamente a oração e começar a planejar o conserto.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q1" value="desvio" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Evitar olhar, pois sente que o problema não é responsabilidade sua.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pergunta 2 -->
+                <div class="quiz-step hidden mt-8" data-step="2">
+                    <p class="font-serif font-bold text-stone-900 text-md sm:text-lg mb-4">2. Diante de fortes críticas ou difamações de terceiros ao seu trabalho, qual sua reação?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q2" value="desvio" class="accent-terracotta-600" checked="">
+                            <span class="text-sm text-stone-700">Fica profundamente abatido e pensa em abandonar a missão.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q2" value="oracao" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Para tudo para debater, responder e confrontar os agressores.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q2" value="acao" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Diz "Estou fazendo uma grande obra e não vou descer" e segue focado.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Pergunta 3 -->
+                <div class="quiz-step hidden mt-8" data-step="3">
+                    <p class="font-serif font-bold text-stone-900 text-md sm:text-lg mb-4">3. Qual a sua relação entre oração e planejamento tático no dia a dia?</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q3" value="oracao" class="accent-terracotta-600" checked="">
+                            <span class="text-sm text-stone-700">Prego apenas a oração, agindo por impulso sem qualquer planejamento lógico.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q3" value="desvio" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Planejo exaustivamente as coisas sem parar um minuto para orar sobre elas.</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3 bg-stone-100 hover:bg-stone-200/60 rounded-lg cursor-pointer transition-all">
+                            <input type="radio" name="q3" value="acao" class="accent-terracotta-600">
+                            <span class="text-sm text-stone-700">Conecto profundamente ambos: dependência de Deus e estratégia inteligente.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Controles -->
+                <div class="mt-8 pt-6 border-t border-stone-200 flex justify-between items-center">
+                    <button id="prev-btn" onclick="mudarPasso(-1)" class="text-stone-600 hover:text-stone-900 text-sm font-medium hidden">
+                        ← Voltar
+                    </button>
+                    <span id="step-indicator" class="text-stone-400 text-xs">Passo 1 de 3</span>
+                    <button id="next-btn" onclick="mudarPasso(1)" class="bg-stone-900 text-stone-100 hover:bg-terracotta-600 font-semibold px-5 py-2.5 rounded-lg text-sm transition-all ml-auto">
+                        Avançar →
+                    </button>
+                    <button id="finish-btn" onclick="mostrarResultadoQuiz()" class="bg-terracotta-600 hover:bg-terracotta-700 text-stone-50 font-semibold px-5 py-2.5 rounded-lg text-sm transition-all ml-auto hidden">
+                        Ver Resultado
+                    </button>
+                </div>
+            </div>
+
+            <!-- Caixa de Resultados do Quiz -->
+            <div id="quiz-result" class="hidden text-center space-y-4">
+                <div class="w-16 h-16 bg-ochre-100 text-ochre-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <!-- Ícone Selo de Conclusão -->
+                    <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+                <h4 class="font-serif text-2xl font-bold text-stone-900">Seu Perfil de Liderança</h4>
+                <div id="quiz-badge" class="inline-block px-3 py-1 bg-ochre-500 text-stone-950 font-semibold text-xs rounded-full uppercase tracking-wider">
+                    Perfil O Construtor
+                </div>
+                <p id="quiz-feedback" class="text-stone-600 text-sm max-w-lg mx-auto leading-relaxed">
+                    Carregando seu perfil pessoal...
+                </p>
+                <div class="pt-4">
+                    <button onclick="reiniciarQuiz()" class="text-xs text-terracotta-600 hover:text-terracotta-700 font-bold underline">
+                        Refazer a autoavaliação
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Exportação para o GitHub Pages -->
+    <section id="exportar" class="bg-stone-100 py-16 border-t border-stone-200">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="bg-stone-50 border border-stone-300 rounded-2xl p-6 sm:p-10 shadow-lg">
+                <div class="flex items-center space-x-3 mb-6">
+                    <span class="p-2 bg-stone-900 text-stone-100 rounded-lg">
+                        <!-- Ícone Github -->
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-stone-900">Como hospedar esta página no GitHub Pages</h3>
+                </div>
+
+                <p class="text-stone-600 text-sm mb-6 leading-relaxed">
+                    Esta página foi desenvolvida em formato <strong>Single File</strong>, contendo todo o HTML, CSS e JavaScript necessários em um único arquivo, o que a torna perfeita para publicação rápida e gratuita no GitHub Pages.
+                </p>
+
+                <!-- Passos para publicação -->
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-4">
+                        <span class="w-6 h-6 rounded-full bg-stone-800 text-stone-100 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                        <div>
+                            <span class="font-bold text-stone-900 text-sm block">Baixe o Arquivo HTML</span>
+                            <span class="text-xs text-stone-600 block mt-0.5">Clique no botão abaixo para baixar o arquivo index.html diretamente no seu computador.</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="w-6 h-6 rounded-full bg-stone-800 text-stone-100 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                        <div>
+                            <span class="font-bold text-stone-900 text-sm block">Crie um Repositório no GitHub</span>
+                            <span class="text-xs text-stone-600 block mt-0.5">Crie um repositório público no GitHub (exemplo: <code class="bg-stone-200 px-1.5 py-0.5 rounded text-stone-800 text-[11px]">o-desafio-de-neemias</code>).</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="w-6 h-6 rounded-full bg-stone-800 text-stone-100 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                        <div>
+                            <span class="font-bold text-stone-900 text-sm block">Suba o Arquivo e Ative</span>
+                            <span class="text-xs text-stone-600 block mt-0.5">Adicione o arquivo <code class="bg-stone-200 px-1.5 py-0.5 rounded text-stone-800 text-[11px]">index.html</code> no repositório. Vá em <strong class="text-stone-800">Settings &gt; Pages</strong>, selecione a branch <strong class="text-stone-800">main</strong> e clique em Salvar!</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botões de Ação para Exportação -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-start items-center">
+                    <button onclick="downloadCode()" class="w-full sm:w-auto bg-terracotta-600 hover:bg-terracotta-700 text-stone-50 font-bold px-6 py-3.5 rounded-lg transition-all text-sm flex items-center justify-center gap-2 shadow-sm">
+                        <!-- Download icon -->
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        Baixar Código (index.html)
+                    </button>
+                    <button onclick="copyRawCode()" class="w-full sm:w-auto bg-stone-900 hover:bg-stone-800 text-stone-100 font-bold px-6 py-3.5 rounded-lg transition-all text-sm flex items-center justify-center gap-2 shadow-sm">
+                        <!-- Copiar icon -->
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
+                            <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        Copiar Código Fonte
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Devocional Toast Box (Para notificações flutuantes) -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-stone-100 text-sm px-6 py-4 rounded-xl shadow-2xl border border-ochre-500/30 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3">
+        <span class="text-ochre-500">✦</span>
+        <span id="toast-message">Notificação de Sistema</span>
+    </div>
+
+    <!-- Rodapé Minimalista com Logotipo de Muro Estilizado -->
+    <footer class="mt-auto bg-stone-950 text-stone-300 py-12 border-t border-stone-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center space-y-6">
+            
+            <!-- Logotipo do Rodapé - Muro Estilizado + Texto 'O Desafio de Neemias' -->
+            <div class="flex flex-col items-center space-y-3">
+                <!-- Desenho do Muro Estilizado -->
+                <div class="w-20 h-10 flex flex-col justify-between border-b-2 border-ochre-500/60 pb-1">
+                    <div class="flex justify-between w-full h-2 px-1">
+                        <div class="w-4 h-full bg-ochre-500/20 border border-ochre-500/40 rounded-[1px]"></div>
+                        <div class="w-6 h-full bg-ochre-500/30 border border-ochre-500/40 rounded-[1px]"></div>
+                        <div class="w-4 h-full bg-ochre-500/20 border border-ochre-500/40 rounded-[1px]"></div>
+                    </div>
+                    <div class="flex justify-between w-full h-2 px-1">
+                        <div class="w-7 h-full bg-ochre-500/30 border border-ochre-500/40 rounded-[1px]"></div>
+                        <div class="w-7 h-full bg-ochre-500/30 border border-ochre-500/40 rounded-[1px]"></div>
+                    </div>
+                    <div class="flex justify-between w-full h-2 px-1">
+                        <div class="w-5 h-full bg-ochre-500/20 border border-ochre-500/40 rounded-[1px]"></div>
+                        <div class="w-5 h-full bg-ochre-500/20 border border-ochre-500/40 rounded-[1px]"></div>
+                        <div class="w-5 h-full bg-ochre-500/20 border border-ochre-500/40 rounded-[1px]"></div>
+                    </div>
+                </div>
+                <h4 class="font-serif font-bold text-lg tracking-widest text-stone-100 uppercase">
+                    O Desafio de Neemias
+                </h4>
+            </div>
+
+            <p class="text-xs text-stone-500 max-w-lg leading-relaxed">
+                "Assim edificamos o muro, e todo o muro se fechou até a sua metade; porque o coração do povo se inclinava a trabalhar." — Neemias 4:6
+            </p>
+
+            <div class="h-[1px] w-12 bg-stone-800"></div>
+
+            <p class="text-[10px] text-stone-600">
+                © 2026 O Desafio de Neemias. Projeto de Estudo Bíblico e Liderança. Prático para exportação direta ao GitHub Pages.
+            </p>
         </div>
     </footer>
-</div>
 
-</body>
-</html>
+    <!-- Lógica Interativa Javascript -->
+    <script>
+        // Função de Exibir Notificações/Toasts Sem Usar Alert
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        // 1. Gerador de Plano Devocional Dinâmico
+        function gerarPlanoAcao() {
+            const prop = document.getElementById('check-prop').checked;
+            const orac = document.getElementById('check-orac').checked;
+            const plan = document.getElementById('check-plan').checked;
+            const persev = document.getElementById('check-persev').checked;
+
+            const box = document.getElementById('plano-resultado');
+            const conteudo = document.getElementById('plano-conteudo');
+            
+            let html = "";
+
+            if (!prop && !orac && !plan && !persev) {
+                html = "<p class='text-stone-400 italic text-center'>Selecione pelo menos um dos pilares de Neemias para estruturar o seu plano devocional.</p>";
+            } else {
+                if (prop) {
+                    html += `
+                        <div class="border-l-2 border-ochre-500 pl-3 py-1">
+                            <strong class="text-stone-100 text-sm block">1. Propósito Consolidado</strong>
+                            <span class="text-xs text-stone-400">Comprometa-se com uma causa de impacto real de restauração, seja na sua vizinhança, igreja ou estrutura de sua família. Abandone a indiferença.</span>
+                        </div>
+                    `;
+                }
+                if (orac) {
+                    html += `
+                        <div class="border-l-2 border-ochre-500 pl-3 py-1">
+                            <strong class="text-stone-100 text-sm block">2. A Oração Pró-Ativa</strong>
+                            <span class="text-xs text-stone-400">Antes de tomar grandes ou pequenas decisões administrativas, reserve minutos de meditação sincera e oração focada em sua rotina.</span>
+                        </div>
+                    `;
+                }
+                if (plan) {
+                    html += `
+                        <div class="border-l-2 border-ochre-500 pl-3 py-1">
+                            <strong class="text-stone-100 text-sm block">3. Organização Estratégica</strong>
+                            <span class="text-xs text-stone-400">Escreva metas, levante orçamentos de esforço e determine prioridades de maneira lógica. Alie fé inabalável com excelente método técnico.</span>
+                        </div>
+                    `;
+                }
+                if (persev) {
+                    html += `
+                        <div class="border-l-2 border-ochre-500 pl-3 py-1">
+                            <strong class="text-stone-100 text-sm block">4. Blindagem Contra Críticas</strong>
+                            <span class="text-xs text-stone-400">Não desperdice o seu precioso tempo de dedicação discutindo ou revidando intrigas externas ou boatos. Deixe que o resultado da obra fale por si só.</span>
+                        </div>
+                    `;
+                }
+            }
+
+            conteudo.innerHTML = html;
+            box.classList.remove('hidden');
+            
+            // Rolar suavemente para exibir o plano gerado
+            setTimeout(() => {
+                box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+            
+            showToast("Seu Plano de Aplicação Prática foi gerado com sucesso!");
+        }
+
+        // 2. Lógica do Quiz Devocional de Liderança
+        let currentStep = 1;
+        const totalSteps = 3;
+
+        function mudarPasso(direction) {
+            // Esconde passo atual
+            document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.add('hidden');
+            
+            currentStep += direction;
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > totalSteps) currentStep = totalSteps;
+
+            // Mostra novo passo
+            document.querySelector(`.quiz-step[data-step="${currentStep}"]`).classList.remove('hidden');
+
+            // Atualiza botões e indicadores
+            document.getElementById('step-indicator').innerText = `Passo ${currentStep} de ${totalSteps}`;
+            
+            if (currentStep === 1) {
+                document.getElementById('prev-btn').classList.add('hidden');
+            } else {
+                document.getElementById('prev-btn').classList.remove('hidden');
+            }
+
+            if (currentStep === totalSteps) {
+                document.getElementById('next-btn').classList.add('hidden');
+                document.getElementById('finish-btn').classList.remove('hidden');
+            } else {
+                document.getElementById('next-btn').classList.remove('hidden');
+                document.getElementById('finish-btn').classList.add('hidden');
+            }
+        }
+
+        function mostrarResultadoQuiz() {
+            // Conta as respostas escolhidas
+            const q1Value = document.querySelector('input[name="q1"]:checked')?.value;
+            const q2Value = document.querySelector('input[name="q2"]:checked')?.value;
+            const q3Value = document.querySelector('input[name="q3"]:checked')?.value;
+
+            // Pontuação rápida simplificada
+            let counts = { oracao: 0, acao: 0, desvio: 0 };
+            counts[q1Value]++;
+            counts[q2Value]++;
+            counts[q3Value]++;
+
+            let badge = "O Pacificador";
+            let feedback = "Sua liderança brilha em momentos de reconciliação e mediação de injustiças, equilibrando de forma excelente suas tarefas humanas com as relações sociais das equipes.";
+
+            if (counts.acao >= 2) {
+                badge = "O Reconstrutor Focado";
+                feedback = "Como Neemias, você tem uma enorme inclinação prática para a realização, planejamento estratégico e resiliência em face da oposição. Mantenha os seus olhos sempre voltados ao propósito final.";
+            } else if (counts.oracao >= 2) {
+                badge = "O Intercessor";
+                feedback = "Sua força primordial se origina de sua profunda sensibilidade espiritual e vida reflexiva. Você busca a orientação superior antes de qualquer coisa física, mas lembre-se de que a fé genuína também exige levantar as espátulas para a construção ativa.";
+            } else if (counts.desvio >= 2) {
+                badge = "Líder em Transição";
+                feedback = "Você pode estar se sentindo um pouco desanimado, exausto ou disperso frente a problemas atuais. É um momento propício para renovar suas orações, reencontrar sua motivação central e assumir a responsabilidade por sua causa sagrada.";
+            }
+
+            // Oculta área do formulário e exibe a caixa de resultado final
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('quiz-result').classList.remove('hidden');
+
+            document.getElementById('quiz-badge').innerText = badge;
+            document.getElementById('quiz-feedback').innerText = feedback;
+
+            showToast("Parabéns por concluir sua autoavaliação!");
+        }
+
+        function reiniciarQuiz() {
+            currentStep = 1;
+            document.getElementById('quiz-container').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+
+            // Exibir apenas passo 1
+            document.querySelectorAll('.quiz-step').forEach(step => step.classList.add('hidden'));
+            document.querySelector('.quiz-step[data-step="1"]').classList.remove('hidden');
+
+            document.getElementById('step-indicator').innerText = `Passo 1 de ${totalSteps}`;
+            document.getElementById('prev-btn').classList.add('hidden');
+            document.getElementById('next-btn').classList.remove('hidden');
+            document.getElementById('finish-btn').classList.add('hidden');
+        }
+
+        // 3. Gerador automático do Código Fonte do próprio arquivo para exportação
+        function copyRawCode() {
+            // Obter todo o HTML do documento atual
+            const entireHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            
+            // Método robusto alternativo de cópia compatível com iframe sandbox
+            const textarea = document.createElement("textarea");
+            textarea.value = entireHTML;
+            textarea.style.position = "fixed";  // Evitar rolagem de página indesejada
+            document.body.appendChild(textarea);
+            textarea.select();
+            
+            try {
+                document.execCommand('copy');
+                showToast("Sucesso! Código copiado para sua área de transferência.");
+            } catch (err) {
+                showToast("Erro ao tentar copiar código automaticamente. Selecione manualmente.");
+            }
+            
+            document.body.removeChild(textarea);
+        }
+
+        // 4. Download direto de index.html por Blob
+        function downloadCode() {
+            const entireHTML = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+            const blob = new Blob([entireHTML], { type: 'text/html;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast("Sucesso! O arquivo 'index.html' foi baixado no seu dispositivo.");
+        }
+    </script>
+
+</body></html>
